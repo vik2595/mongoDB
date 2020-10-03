@@ -13,7 +13,7 @@ services:
 
   mongo-rs1:
     image: "mongo"
-    command: --replSet rs0 --smallfiles --oplogSoze 128
+    command: --replSet rs0 --smallfiles --oplogSize 128
     ports:
       - "27018:27017"
     volumes:
@@ -21,7 +21,7 @@ services:
 
   mongo-rs2:
     image: "mongo"
-    command: --replSet rs0 --smallfiles --oplogSoze 128
+    command: --replSet rs0 --smallfiles --oplogSize 128
     ports:
       - "27019:27017"
     volumes:
