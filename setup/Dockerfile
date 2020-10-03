@@ -5,6 +5,7 @@ WORKDIR /usr/src/configs
 COPY replicaSet.js .
 COPY setup.sh .
 
-EXPOSE 27017
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+USER docker
 
-CMD ["./setup.sh"]
+CMD ["sudo","./setup.sh"]
