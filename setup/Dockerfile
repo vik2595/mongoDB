@@ -7,4 +7,4 @@ COPY setup.sh .
 
 EXPOSE 27017
 
-CMD [", ./setup.sh"]
+CMD ["./setup.sh"]
