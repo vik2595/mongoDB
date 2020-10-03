@@ -2,14 +2,14 @@ version: "3"
 services:
   mongo-rs0:
     image: "mongo-start"
-    build: ./rs0
+    build: ./mongo-rs0-1
     ports:
       - "27017:27017"
     volumes:
-      - ./rs0/data:data/db
+      - ./mongo-rs0-1/data:data/db
     depends_on:
-      - "mongo-rs1"
-      - "mongo-rs2"
+      - "mongo-rs0-2"
+      - "mongo-rs0-3"
 
   mongo-rs1:
     image: "mongo"
@@ -17,7 +17,7 @@ services:
     ports:
       - "27018:27017"
     volumes:
-      - ./rs2/data:data/db
+      - ./mongo-rs0-2/data:data/db
 
   mongo-rs2:
     image: "mongo"
@@ -25,13 +25,13 @@ services:
     ports:
       - "27019:27017"
     volumes:
-      - ./rs3/data:data/db
+      - ./mongo-rs0-3/data:data/db
 
-  startup:
+  setup-rs:
     image: "setup-rs"
     build: ./setup
     depends_on:
-      - "mongo-rs0"
+      - "mongo-rs0-1"
 
   admin:
     image: "mrvautin/adminmongo"
