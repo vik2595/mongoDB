@@ -1,6 +1,6 @@
 version: "3"
 services:
-  mongo-rs0:
+  mongo-rs0-1:
     image: "mongo-start"
     build: ./mongo-rs0-1
     ports:
@@ -11,7 +11,7 @@ services:
       - "mongo-rs0-2"
       - "mongo-rs0-3"
 
-  mongo-rs1:
+  mongo-rs0-2:
     image: "mongo"
     command: --replSet rs0 --smallfiles --oplogSize 128
     ports:
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./mongo-rs0-2/data:data/db
 
-  mongo-rs2:
+  mongo-rs0-3:
     image: "mongo"
     command: --replSet rs0 --smallfiles --oplogSize 128
     ports:
